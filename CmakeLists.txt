@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.15)
+project(Project41)
+
+# Set the C++ standard you wish to use
+set(CMAKE_CXX_STANDARD 17)
+
+# Find OpenCV package in your system
+find_package(OpenCV REQUIRED)
+
+# Include directories for OpenCV
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories("/usr/local/include/eigen")
+
+# Add the directory where the ArUco CMakeLists.txt is located
+# This will compile the ArUco library as part of your project
+add_subdirectory("/Users/aswinchanderaravindkumar/Desktop/Project/aruco-3.1.12/src")
+
+# Add your source files to the executable
+add_executable(main src/main.cpp src/functions.cpp src/csv_util.cpp)
+add_executable(pattern src/pattern.cpp src/functions.cpp src/csv_util.cpp)
+add_executable(overlay src/overlay.cpp src/functions.cpp src/csv_util.cpp)
+
+# Link your executable with the OpenCV libraries and the ArUco library
+target_link_libraries(main ${OpenCV_LIBS} aruco)
+target_link_libraries(pattern ${OpenCV_LIBS} )
+target_link_libraries(overlay ${OpenCV_LIBS} )
