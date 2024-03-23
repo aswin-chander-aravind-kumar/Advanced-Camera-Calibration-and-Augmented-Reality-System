@@ -27,10 +27,60 @@ In this program we capture video from our webcam and processes each frame to det
   
 ## Build Instructions
 
-1. Clone the repository.
-2. Install OpenCV if not already installed.
-3. Build the project using c make.
-4. Run the executable file.
+- Ensure you have CMake version 3.15 or higher installed on your system
+- Create a CMake lists that ensures that all the files are linked together accurately 
+- Download all the cpp and .h files to your local machine
+- Place the cpp and .h files in src folder. Creating a results folder in build/Debug filter
+- Saving all the videos in the results Directory
+- Now create a build folder and use cmake .. to build it
+- To run your executable enter the debug folder and run the ./main executable along with the required arguments
+- Additionally linked csv_util.cpp(professor's), csv_util.h(professor's), overlay.cpp and pattern.cpp to implement additional tasks
+-Saving features.csv file in build/Debug/results/calibrations_results.csv
+
+## Instructions to implement the tasks
+
+Instructions for implementing different tasks:
+
+**In main.cpp**:
+
+Chessboard Detection and Calibration
+
+- q or `sc: Quit the program.
+- s: Save detected corners and 3D points for calibration.
+- c: Perform camera calibration using detected corners and saved images.
+- t: Perform pose estimation for the detected chessboard.
+- p: Generate projection frame with origin axis displayed in R, G, B on the chessboard.
+- v: Generate a virtual chessboard by mapping 2D points to 3D space and overlaying virtual objects.
+
+**AR Overlay**
+- AR target:
+  - Overlay a virtual object onto the detected scene.
+
+
+**ArUco Marker Detection**
+- aruco target:
+  - Detect ArUco markers and estimate their poses.
+  - Draw detected markers and their axes on the video frame.
+  
+**Multiple ArUco Marker Detection**
+- arucomultiple target:
+  - Detect multiple ArUco markers and estimate their poses.
+  - Draw detected markers and their axes on the video frame.
+
+**In pattern.cpp:**
+
+**Harris Corner Detection**
+- `H` or `h`: Detect corners using the Harris corner detection algorithm.
+- Overlay the detected corners on the original video frame.
+
+
+**Please see the command prompts code for main.cpp, pattern.cpp and overlay.cpp to implement respective commands**
+
+main.cpp - std::cout << "Usage: " << argv[0] << " <camera_index> <target> <obj_name>\n"
+
+pattern.cpp - std::cout << "Usage: " << argv[0] << " <camera_index> <target> <obj_name>\n"
+
+overlay.cpp - std::cerr << "Usage: " << argv[0] << " <CameraIndex> <ObjModelPath>\n"
 
 ## Usage
 
